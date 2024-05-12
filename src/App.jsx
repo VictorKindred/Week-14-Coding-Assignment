@@ -1,14 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import AnimeDetail from './components/AnimeDetail';
+import HomePage from './pages/HomePage';
+import MovieDetailPage from './pages/MovieDetailPage';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/anime/:id" element={<AnimeDetail />} />
-    </Routes>
+    <Route path="/" element={<HomePage />} />
+    <Route path="/movie/:id" element={<MovieDetailPage />} />
+</Routes>
+
   );
 }
 

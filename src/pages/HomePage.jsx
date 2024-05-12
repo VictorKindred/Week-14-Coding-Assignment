@@ -1,33 +1,34 @@
 import React, { useState, useEffect } from "react";
-import AnimeCard from "../Components/AnimeCard";
+import MovieCard from "../Components/MovieCard";
 import FilterBar from "../Components/FilterBar";
-import animes from "../data/anime";
+import movies from "../data/movie";
 
 function HomePage() {
   const [genreFilter, setGenreFilter] = useState("ALL"); //setting them to ALL means no filter
   const [ratingFilter, setRatingFilter] = useState("ALL");
-  const [filteredAnimes, setFilteredAnimes] = useState(animes);
+  const [filteredMovies, setFilteredMovies] = useState(movies);
 
   useEffect(() => {
-    // animes.filter filters the animes array and applies the "test" defined in the function 
-    const filter = animes.filter(
-      (anime) =>
-        (genreFilter === "ALL" || anime.genre.includes(genreFilter)) &&
-        (ratingFilter === "ALL" || anime.rating.toString() === ratingFilter)
+    // movies.filter filters the movies array and applies the "test" defined in the function
+    const filter = movies.filter(
+      (movie) =>
+        (genreFilter === "ALL" || movie.genre.includes(genreFilter)) &&
+        (ratingFilter === "ALL" || movie.rating.toString() === ratingFilter)
     );
-    setFilteredAnimes(filter);
+    setFilteredMovies(filter);
   }, [genreFilter, ratingFilter]);
 
-return (
+  return (
     <div>
-        <FilterBar setGenreFilter={setGenreFilter} setRatingFilter={setRatingFilter} />
-        {filteredAnimes.map(anime => (
-            <AnimeCard key ))}
+      <FilterBar
+        setGenreFilter={setGenreFilter}
+        setRatingFilter={setRatingFilter}
+      />
+      {filteredMovies.map((movie) => (
+        <MovieCard key={movie.id} movie={movie} />
+      ))}
     </div>
-)
-
-
-
-
-
+  );
 }
+
+export default HomePage;
